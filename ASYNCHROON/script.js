@@ -69,7 +69,6 @@ let sum = calculator("+");
 let result = sum(5,5);
 console.log(result);
 
-/* ARRAY FUNCTIES */
 // simpele datatypes:
 let a = 5;
 let b = a;
@@ -80,7 +79,8 @@ console.log(b); //verwachte waarde van b is 5
 let myArray = [1,2,3];
 let mySecondArray = myArray;
 myArray.push(4);
-console.log(mySecondArray); //verwachte waarde 123, maat het is 1234. waarom? de draad wordt niet 'doorgesneden'.ze zijn linked, om data te besparen
+console.log(mySecondArray); //verwachte waarde 123, maat het is 1234. waarom? de draad wordt niet 'doorgesneden'.ze zijn linked, om data te besparen. verwijst naar de array ipv die te kopieren
+
 //spreadoperator
 let myThirdArray = [...myArray]; // zorgt ervoor dat als je iets pusht in myArray het niet gepushed wordt in myThirdArray -> shallow copy
 
@@ -104,3 +104,24 @@ console.log(thirdPerson); //blijft Philippe
 
 console.log(thirdPerson.address.street); //verandert mee, is shallow copy, geen DEEPcopy
 thirdPerson = {...person, adress: {...person.address}} //adres verandert niet mee. geneste shallow copy
+
+let enchantedPerson = {...person, enchanted:true} //iets toevoegen aan je object
+let fourthPerson = {
+    ...person, 
+    hobbies: ["gaming", "drumming"]
+}; //subobject aan je object toevoegen
+
+/* ARRAY FUNCTIES */
+let numbers = [1,4,5,6];
+//for (let i =0; i < numbers.length; i++) {}
+//for (let element of elements)
+//forEach is een arrayfunctie
+numbers.forEach((value, index) => {
+    console.log("op plaats" + index + "staat:" + value);
+}); //verwacht een callbackfunction. verhoogt index automatisch
+
+let numbers2 = [10, 20, 30, 40];
+let newArray = numbers2.map((value) => {
+    return value / 2;
+});
+console.log(newArray);
